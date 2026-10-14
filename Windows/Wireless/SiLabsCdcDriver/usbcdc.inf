@@ -5,7 +5,7 @@ ClassGUID={4D36E978-E325-11CE-BFC1-08002BE10318}
 Provider=%EMAS%
 CatalogFile.NTx86=usbcdc.cat
 CatalogFile.NTAMD64=usbcdc.cat
-DriverVer=07/21/2015,6.1.7601.17514
+DriverVer=10/14/2026,6.1.7601.17515
 
 [Manufacturer]
 %EMAS%=DeviceList, NT, NTAMD64, NTIA64

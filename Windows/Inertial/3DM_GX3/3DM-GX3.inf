@@ -16,7 +16,7 @@ Provider=%STM%
 LayoutFile=layout.inf
 CatalogFile.NTx86=3DM-GX3.cat
 CatalogFile.NTamd64=3DM-GX3.cat
-DriverVer=02/15/2013,1.0.0.0
+DriverVer=10/14/2026,1.1.0.0
 
 [Manufacturer] 
 %MFGNAME%=VirComDevice,NT,NTamd64
