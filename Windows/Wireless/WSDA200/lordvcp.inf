@@ -5,9 +5,10 @@
 ;    LORDVCP.INF
 ;
 ;    Copyright 2016, Silicon Laboratories Inc.
+;    Modified for MicroStrain by HBK products
 ;
 ;Abstract:
-;    Installation INF for Silicon Labs CP210x device
+;    Installation INF for the MicroStrain by HBK WSDA-200 (Silicon Labs CP210x device)
 ;
 ;--*/
 

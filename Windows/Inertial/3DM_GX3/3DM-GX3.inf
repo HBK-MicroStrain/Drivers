@@ -3,9 +3,9 @@
 ; (C)2006 Copyright STMicroelectronics
 ; 
 ;
-;  *************************************
-;  * Modified for Microstrain Products *
-;  *************************************
+;  ***************************************************
+;  * Modified for MicroStrain by HBK Products        *
+;  ***************************************************
 ;
 
 [Version] 
@@ -63,7 +63,7 @@ ServiceBinary=%12%\usbser.sys
 
 
 [Strings] 
-STM         = "MicroStrain"
-MFGNAME     = "MicroStrain"
-DESCRIPTION = "MicroStrain Virtual COM Port"
-SERVICE     = "MicroStrain Virtual COM port"
+STM         = "MicroStrain by HBK"
+MFGNAME     = "MicroStrain by HBK"
+DESCRIPTION = "MicroStrain by HBK Virtual COM Port"
+SERVICE     = "MicroStrain by HBK Virtual COM Port"
