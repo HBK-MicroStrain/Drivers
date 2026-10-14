@@ -3,44 +3,34 @@ Signature="$WINDOWS NT$"
 Class=Ports
 ClassGUID={4D36E978-E325-11CE-BFC1-08002BE10318}
 Provider=%EMAS%
-CatalogFile.NTx86=usbcdc.cat
-CatalogFile.NTAMD64=usbcdc.cat
+CatalogFile=usbcdc.cat
 DriverVer=10/14/2026,6.1.7601.17515
+PnpLockdown=1
 
 [Manufacturer]
-%EMAS%=DeviceList, NT, NTAMD64, NTIA64
+%EMAS%=DeviceList, NTx86, NTamd64
 
 ;------------------------------------------------------------------------------
 
-[DeviceList]
+[DeviceList.NTx86]
 %CDCDEVICE%=DriverInstall,USB\VID_199B&PID_BA2E
 
-[DeviceList.NT]
-%CDCDEVICE%=DriverInstall,USB\VID_199B&PID_BA2E
-
-[DeviceList.NTAMD64]
-%CDCDEVICE%=DriverInstall,USB\VID_199B&PID_BA2E
-
-[DeviceList.NTIA64]
+[DeviceList.NTamd64]
 %CDCDEVICE%=DriverInstall,USB\VID_199B&PID_BA2E
 
 ;------------------------------------------------------------------------------
+; Uses the USB serial driver built into Windows (usbser.sys), via usbser.inf
 
-[DriverInstall]
-Include=mdmcpq.inf
-CopyFiles=FakeModemCopyFileSection
-AddReg=LowerFilterAddReg,SerialPropPageAddReg
+[DriverInstall.NT]
+Include=usbser.inf
+Needs=UsbSerial_Install.NT
 
-[DriverInstall.Services]
-Include=mdmcpq.inf
-AddService = usbser, 0x00000002, LowerFilter_Service_Inst
-
-[SerialPropPageAddReg]
-HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+[DriverInstall.NT.Services]
+Include=usbser.inf
+Needs=UsbSerial_Install.NT.Services
 
 ;------------------------------------------------------------------------------
 
 [Strings]
 EMAS      = "MicroStrain by HBK Base Station Driver"
 CDCDEVICE = "MicroStrain by HBK Base Station"
-SERVICE   = "USB CDC Serial Port Driver"

@@ -19,6 +19,7 @@ ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
 Provider=%Provider%
 DriverVer=10/14/2026,6.7.4.262
 CatalogFile=lordvcp.cat
+PnpLockdown=1
 
 
 ; ================= Device section =====================
@@ -84,23 +85,7 @@ silabser.sys = 1
 [DestinationDirs]
 Silabser.Files.Ext = 12
 
-;-------------- WDF Coinstaller installation
-
-[DestinationDirs]
-CoInstaller_CopyFiles = 11
-
-[silabser.Dev.NT.CoInstallers]
-AddReg=CoInstaller_AddReg
-CopyFiles=CoInstaller_CopyFiles
-
-[CoInstaller_CopyFiles]
-WdfCoinstaller01009.dll
-
-[SourceDisksFiles]
-WdfCoinstaller01009.dll=1
-
-[CoInstaller_AddReg]
-HKR,,CoInstallers32,0x00010000, "WdfCoinstaller01009.dll,WdfCoInstaller"
+;-------------- WDF (the framework silabser.sys is built on; included with Windows 10 and later)
 
 [silabser.Dev.NT.Wdf]
 KmdfService = silabser, silabser_wdfsect

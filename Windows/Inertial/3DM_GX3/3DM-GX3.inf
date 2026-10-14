@@ -1,33 +1,26 @@
-; 
+;
 ; STMicroelectronics Comunication Device Class driver instalation file
 ; (C)2006 Copyright STMicroelectronics
-; 
+;
 ;
 ;  ***************************************************
 ;  * Modified for MicroStrain by HBK Products        *
 ;  ***************************************************
 ;
 
-[Version] 
-Signature="$CHICAGO$"
+[Version]
+Signature="$WINDOWS NT$"
 Class=Ports
 ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
 Provider=%STM%
-LayoutFile=layout.inf
-CatalogFile.NTx86=3DM-GX3.cat
-CatalogFile.NTamd64=3DM-GX3.cat
+CatalogFile=3DM-GX3.cat
 DriverVer=10/14/2026,1.1.0.0
+PnpLockdown=1
 
-[Manufacturer] 
-%MFGNAME%=VirComDevice,NT,NTamd64
+[Manufacturer]
+%MFGNAME%=VirComDevice,NTx86,NTamd64
 
-[DefaultInstall]
-CopyINF="3DM-GX3.inf"
-
-[DestinationDirs]
-DefaultDestDir = 12
-
-[VirComDevice.NT]
+[VirComDevice.NTx86]
 %DESCRIPTION%=DriverInstall,USB\VID_199B&PID_3065
 %DESCRIPTION%=DriverInstall,USB\VID_199B&PID_3D65
 %DESCRIPTION%=DriverInstall,USB\VID_199B&PID_3A65
@@ -37,33 +30,23 @@ DefaultDestDir = 12
 %DESCRIPTION%=DriverInstall,USB\VID_199B&PID_3D65
 %DESCRIPTION%=DriverInstall,USB\VID_199B&PID_3A65
 
-[DriverInstall.NT]
-Include=mdmcpq.inf
-CopyFiles=FakeModemCopyFileSection
-AddReg=DriverInstall.NT.AddReg
+;------------------------------------------------------------------------------
+; Uses the USB serial driver built into Windows (usbser.sys), via usbser.inf
 
-[DriverInstall.NT.AddReg]
-HKR,,DevLoader,,*ntkern
-HKR,,NTMPDriver,,usbser.sys
-HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+[DriverInstall.NT]
+Include=usbser.inf
+Needs=UsbSerial_Install.NT
 
 [DriverInstall.NT.Services]
-AddService=usbser, 0x00000002, DriverServiceInst
-
-[DriverServiceInst]
-DisplayName=%SERVICE%
-ServiceType=1
-StartType=3
-ErrorControl=1
-ServiceBinary=%12%\usbser.sys 
+Include=usbser.inf
+Needs=UsbSerial_Install.NT.Services
 
 ;------------------------------------------------------------------------------
 ;  String Definitions
 ;------------------------------------------------------------------------------
 
 
-[Strings] 
+[Strings]
 STM         = "MicroStrain by HBK"
 MFGNAME     = "MicroStrain by HBK"
 DESCRIPTION = "MicroStrain by HBK Virtual COM Port"
-SERVICE     = "MicroStrain by HBK Virtual COM Port"
